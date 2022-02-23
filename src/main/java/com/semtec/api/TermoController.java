@@ -25,7 +25,7 @@ public class TermoController {
         return repository.save(novoTermo);
     }
 
-    @GetMapping("/termo/{id}")
+    @GetMapping("/{id}")
     Termo exibeTermo(@PathVariable Long id) {
 
         return repository.findById(id)
@@ -33,7 +33,7 @@ public class TermoController {
                 TermoNotFoundException(id));
         }
 
-    @PutMapping("/termo/{id}")
+    @PutMapping("/{id}")
     Termo substituiTermo(@RequestBody Termo
                          novoTermo, @PathVariable Long id) {
 
@@ -49,7 +49,7 @@ public class TermoController {
                 });
     }
 
-    @DeleteMapping("/termo/{id}")
+    @DeleteMapping("/{id}")
     void apagaTermo(@PathVariable Long id) {
         repository.deleteById(id);
     }

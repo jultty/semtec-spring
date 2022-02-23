@@ -16,7 +16,8 @@ class Termo {
 
     Termo() {}
 
-    Termo(Long id, String termo, String significado) {
+    Termo(String termo, String significado) {
+
         this.termo = termo;
         this.significado = significado;
     }
@@ -50,9 +51,8 @@ class Termo {
 
         if (this == o)
             return true;
-        if (!(o instanceof Termo))
+        if (!(o instanceof Termo termo))
             return false;
-        Termo termo = (Termo) o;
         return Objects.equals(this.id, termo.id) &&
                 Objects.equals(this.termo, termo.termo);
     }
@@ -64,8 +64,8 @@ class Termo {
 
     @Override
     public String toString() {
-        return "Employee{" + "id=" + this.id + ",name ='" +
-                this.termo + '\'' + ", role ='" + this.significado +
+        return "Termo{" + "id=" + this.id + ",termo ='" +
+                this.termo + '\'' + ", significado ='" + this.significado +
                 '\'' + '}';
     }
 }
