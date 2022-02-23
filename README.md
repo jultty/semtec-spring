@@ -23,7 +23,7 @@ e apagar entradas via requisições HTTP.
     	* **origem** - origem etimológica ou histórica
     	* **traduções**
     		* **tradução** - termo equivalente
-    		* **idioma** - idioma em padrão ISO-
+    		* **idioma** - 
     		* **detalhes** - corpo da tradução
     * **tags** - título (obrigatório)
     	* **tag** - nome curto da tag
@@ -33,7 +33,6 @@ e apagar entradas via requisições HTTP.
 
 ```json
 {
-"termo": "",
   "termo": "",
   "significados": [
     {

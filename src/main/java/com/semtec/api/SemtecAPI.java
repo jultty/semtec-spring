@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SemtecApplication {
+public class SemtecAPI {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SemtecApplication.class, args);
+		SpringApplication.run(SemtecAPI.class, args);
 	}
 
 }
