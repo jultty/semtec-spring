@@ -6,3 +6,5 @@ extraction:
       maven:
         version: 3.8.4
         settings_file: pom.xml 
+      build_command:
+        - mvn clean spring-boot:run
