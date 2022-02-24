@@ -1,7 +1,8 @@
 # semtec API
 
-![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/jultty/semtec-api)
-![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/jultty/semtec-api)
+[![Heroku](http://heroku-badge.herokuapp.com/?app=semtec&root=api/v1/termo)](https://semtec.herokuapp.com/)
+[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/jultty/semtec-api)](https://libraries.io/github/jultty/semtec-api)
+[![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/jultty/semtec-api)](https://snyk.statuspage.io/)
 [![CodeFactor](https://www.codefactor.io/repository/github/jultty/semtec-api/badge)](https://www.codefactor.io/repository/github/jultty/semtec-api)
 
 Guarda, manipula e retorna significados de termos técnicos em notação JSON.
