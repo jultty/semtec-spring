@@ -1,5 +1,9 @@
 # semtec API
 
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/jultty/semtec-api)
+![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/jultty/semtec-api)
+[![CodeFactor](https://www.codefactor.io/repository/github/jultty/semtec-api/badge)](https://www.codefactor.io/repository/github/jultty/semtec-api)
+
 Guarda, manipula e retorna significados de termos técnicos em notação JSON.
 
 Se deseja ler as definições, veja a [página Jekyll](https://jultty.github.io)
