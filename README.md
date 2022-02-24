@@ -63,4 +63,17 @@ e apagar entradas via requisições HTTP.
 
 ### Exemplos
 
+Implementação atual:
 
+Cria uma nova entrada:
+```bash
+curl -X POST localhost:8080/api/v1/termo -H 'Content-type:application/json' -d '{"termo": "interface", "significado": "media as trocas de informação entre componentes de um sistema"}'
+```
+
+Consulta uma entrada pelo ID:
+```bash
+curl -X GET localhost:8080/api/v1/termo/ID
+```
+
+Substitua o ID pelo número do termo. 
+Novos termos são inseridos a partir do ID 1.

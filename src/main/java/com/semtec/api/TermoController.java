@@ -15,12 +15,12 @@ public class TermoController {
     }
 
     // aggregate root
-    @GetMapping("/")
+    @GetMapping("")
     List<Termo> all() {
         return repository.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     Termo criaTermo(@RequestBody Termo novoTermo) {
         return repository.save(novoTermo);
     }
