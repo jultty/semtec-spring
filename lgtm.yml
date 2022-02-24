@@ -122,7 +122,7 @@ extraction:
         version: 4.4
       # Override the autobuild process by specifying a list of custom build commands
       # to use instead.
-      build_command: ./mvnw clean spring-boot:run
+      build_command: mvn clean spring-boot:run
       # Specify the Java version required to build the project.
       java_version: 17
       # Specify whether to extract Java .properties files
@@ -132,7 +132,7 @@ extraction:
       maven:
         # Specify the path (absolute or relative) of a Maven settings file to use.
         # Default: Maven uses a settings file in the default location, if it exists.
-        settings_file: /opt/share/settings.xml
+        settings_file: ./pom.xml
         # Specify the path of a Maven toolchains file.
         # Default: Maven uses a toolchains file in the default location, if it exists.
         toolchains_file: /opt/share/toolchains.xml
