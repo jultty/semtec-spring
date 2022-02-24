@@ -51,8 +51,9 @@ class Termo {
 
         if (this == o)
             return true;
-        if (!(o instanceof Termo termo))
+        if (!(o instanceof Termo))
             return false;
+        Termo termo = (Termo) o;
         return Objects.equals(this.id, termo.id) &&
                 Objects.equals(this.termo, termo.termo);
     }
