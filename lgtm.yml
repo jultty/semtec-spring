@@ -124,7 +124,7 @@ extraction:
       # to use instead.
       build_command: mvn clean spring-boot:run
       # Specify the Java version required to build the project.
-      java_version: 17
+      java_version: 17.0.2
       # Specify whether to extract Java .properties files
       # Default: false
       #properties_files: true
