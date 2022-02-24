@@ -135,10 +135,10 @@ extraction:
         settings_file: ./pom.xml
         # Specify the path of a Maven toolchains file.
         # Default: Maven uses a toolchains file in the default location, if it exists.
-        toolchains_file: /opt/share/toolchains.xml
+        #toolchains_file: /opt/share/toolchains.xml
         # Specify the required Maven version.
         # Default: the Maven version is determined automatically, where feasible.
-        version: 3.5.2
+        version: 3.8.4
       # Specify how XML files should be extracted:
       #   all = extract all XML files.
       #   default = extract all XML files, unless there is more than 50MB of XML in the source root, in which case use the `byname` method below.
