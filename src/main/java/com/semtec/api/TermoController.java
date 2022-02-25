@@ -20,7 +20,6 @@ public class TermoController {
         this.repository = repository;
     }
 
-    // aggregate root
     @GetMapping("")
     CollectionModel<EntityModel<Termo>> all() {
 
@@ -35,7 +34,6 @@ public class TermoController {
             return CollectionModel.of(termos,
     linkTo(methodOn(TermoController.class).all()).withSelfRel());
     }
-
 
     @PostMapping("")
     Termo criaTermo(@RequestBody Termo novoTermo) {

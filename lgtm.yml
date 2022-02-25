@@ -1,46 +1,8 @@
-#########################################################################################
-# Environment variables available to the steps:                                         #
-#########################################################################################
-
-# LGTM_SRC
-#   The root of the source tree.
-# LGTM_WORKSPACE
-#   An existing (initially empty) folder outside the source tree.
-#   Used for temporary download and setup commands.
-
-#########################################################################################
-# Use the extraction block to define changes to the default code extraction process     #
-# for one or more languages. The settings for each language are defined in a child      #
-# block, with one or more steps.                                                        #
-#########################################################################################
-
 extraction:
-  # Define settings for Java analysis
-  ####################################
   java:
-    # The `prepare` step exists for customization on LGTM.com only.
-    # prepare:
-    #   packages:
-    #     - example_package
-    # Add an `after-prepare` step if you need to run commands after the prepare step.
-    # Each command should be listed on a separate line.
-    after_prepare:
-    #  - export PATH=$LGTM_WORKSPACE/tools:$PATH
-    # The `index` step extracts information from the files in the codebase.
     index:
-      # Specify Gradle settings.
-      gradle:
-        # Specify the required Gradle version.
-        # Default: determined automatically.
-        version: 4.4
-      # Override the autobuild process by specifying a list of custom build commands
-      # to use instead.
-      build_command: mvnw spring-boot:run
-      java_version: 11
-      # Specify whether to extract Java .properties files
-      # Default: false
-      #properties_files: true
-      # Specify Maven settings.
+      java_version: "11"
       maven:
-        version: 3.8.4
-        build_command: mvn spring-boot:run
+        version: "3.8.4"
+      build_command:
+        - "mvn package"
