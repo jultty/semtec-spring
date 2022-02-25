@@ -18,7 +18,59 @@ e disponibilizadas para consulta de forma serializada.
 É capaz de servir páginas HTML e de exibir, atualizar
 e apagar entradas via requisições HTTP.
 
+## Exemplos
+
+Implementação atual:
+
+Cria uma nova entrada:
+```bash
+curl -X POST localhost:8080/api/v1/termo -H 'Content-type:application/json' -d '{"termo": "interface", "significado": "media as trocas de informação entre componentes de um sistema"}'
+```
+
+Consulta uma entrada pelo ID:
+```bash
+curl -X GET localhost:8080/api/v1/termo/ID
+```
+
+Substitua "ID" pelo número do termo. 
+Novos termos são inseridos a partir do ID 1.
+
+Outras requisições: `PUT`, `DELETE`.
+
+Para formatar a saída:
+```bash
+curl -X GET localhost:8080/api/v1/termo/ID | json_pp
+```
+
+ou com jq:
+
+```bash
+cat saida.json | jq -C .
+```
+
 ## Especificação
+
+### Estrutura de dados
+
+
+Presente:
+
+```json
+{
+   "_links" : {
+      "self" : {
+         "href" : "http://localhost:8080/api/v1/termo/1"
+      },
+      "termo" : {
+         "href" : "http://localhost:8080/api/v1/termo/"
+      }
+   },
+   "id" : 1,
+   "significado" : "media as trocas de informação entre componentes de um sistema",
+   "termo" : "interface"
+}
+```
+Planejada:
 
 * **termo**
     * **termo** - nome principal, usado em títulos
@@ -34,8 +86,7 @@ e apagar entradas via requisições HTTP.
     	* **tag** - nome curto da tag
     	* **prioridade** - 1 a 99, números menores indicam maior prioridade
 
-### Notação JSON
-
+#### Notação JSON 
 ```json
 {
   "termo": "",
@@ -62,19 +113,3 @@ e apagar entradas via requisições HTTP.
 }
 ```
 
-### Exemplos
-
-Implementação atual:
-
-Cria uma nova entrada:
-```bash
-curl -X POST localhost:8080/api/v1/termo -H 'Content-type:application/json' -d '{"termo": "interface", "significado": "media as trocas de informação entre componentes de um sistema"}'
-```
-
-Consulta uma entrada pelo ID:
-```bash
-curl -X GET localhost:8080/api/v1/termo/ID
-```
-
-Substitua o ID pelo número do termo. 
-Novos termos são inseridos a partir do ID 1.
