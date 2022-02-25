@@ -1,8 +1,14 @@
 package com.semtec.api;
 
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/api/v1/termo")
@@ -16,21 +22,45 @@ public class TermoController {
 
     // aggregate root
     @GetMapping("")
-    List<Termo> all() {
-        return repository.findAll();
+    CollectionModel<EntityModel<Termo>> all() {
+
+    List<EntityModel<Termo>> termos =
+            repository.findAll().stream()
+                    .map(termo -> EntityModel.of(termo,
+    linkTo(methodOn(TermoController.class)
+            .exibeTermo(termo.getId())).withSelfRel(),
+    linkTo(methodOn(TermoController.class).all())
+            .withRel("termos"))).collect(Collectors.toList());
+
+            return CollectionModel.of(termos,
+    linkTo(methodOn(TermoController.class).all()).withSelfRel());
     }
+
 
     @PostMapping("")
     Termo criaTermo(@RequestBody Termo novoTermo) {
         return repository.save(novoTermo);
     }
 
+    /*
     @GetMapping("/{id}")
     Termo exibeTermo(@PathVariable Long id) {
 
         return repository.findById(id)
                 .orElseThrow(() -> new
                 TermoNotFoundException(id));
+        }
+     */
+
+    @GetMapping("/{id}")
+    EntityModel<Termo> exibeTermo(@PathVariable Long id) {
+
+        Termo termo = repository.findById(id)
+                .orElseThrow(() -> new TermoNotFoundException(id));
+
+        return EntityModel.of(termo,
+                linkTo(methodOn(TermoController.class).exibeTermo(id)).withSelfRel(),
+                linkTo(methodOn(TermoController.class).all()).withRel("termo"));
         }
 
     @PutMapping("/{id}")

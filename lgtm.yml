@@ -35,7 +35,7 @@ extraction:
         version: 4.4
       # Override the autobuild process by specifying a list of custom build commands
       # to use instead.
-      build_command: mvnw spring-boot:run 
+      build_command: mvnw spring-boot:run
       java_version: 11
       # Specify whether to extract Java .properties files
       # Default: false
