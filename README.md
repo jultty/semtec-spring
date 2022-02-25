@@ -3,6 +3,8 @@
 [![Heroku](http://heroku-badge.herokuapp.com/?app=semtec&root=api/v1/termo)](https://semtec.herokuapp.com/)
 [![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/jultty/semtec-api)](https://libraries.io/github/jultty/semtec-api)
 [![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/jultty/semtec-api)](https://snyk.statuspage.io/)
+[![LGTM Alerts](https://img.shields.io/lgtm/alerts/github/jultty/semtec-api?label=alerts&logo=lgtm)](https://lgtm.com/projects/g/jultty/semtec-api/?mode=list)
+[![LGTM Grade](https://img.shields.io/lgtm/grade/java/github/jultty/semtec-api?label=java&logo=lgtm)](https://lgtm.com/projects/g/jultty/semtec-api/context:java)
 [![CodeFactor](https://www.codefactor.io/repository/github/jultty/semtec-api/badge)](https://www.codefactor.io/repository/github/jultty/semtec-api)
 
 Guarda, manipula e retorna significados de termos técnicos em notação JSON.
