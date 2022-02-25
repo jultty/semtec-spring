@@ -12,12 +12,15 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/api/v1/termo")
-public class TermoController {
+class TermoController {
 
     private final TermoRepository repository;
+    private final TermoModelAssembler assembler;
 
-    TermoController(TermoRepository repository) {
+    TermoController(TermoRepository repository,
+                    TermoModelAssembler assembler) {
         this.repository = repository;
+        this.assembler = assembler;
     }
 
     @GetMapping("")
@@ -25,11 +28,7 @@ public class TermoController {
 
     List<EntityModel<Termo>> termos =
             repository.findAll().stream()
-                    .map(termo -> EntityModel.of(termo,
-    linkTo(methodOn(TermoController.class)
-            .exibeTermo(termo.getId())).withSelfRel(),
-    linkTo(methodOn(TermoController.class).all())
-            .withRel("termos"))).collect(Collectors.toList());
+                    .map(assembler::toModel).collect(Collectors.toList());
 
             return CollectionModel.of(termos,
     linkTo(methodOn(TermoController.class).all()).withSelfRel());
@@ -46,9 +45,7 @@ public class TermoController {
         Termo termo = repository.findById(id)
                 .orElseThrow(() -> new TermoNotFoundException(id));
 
-        return EntityModel.of(termo,
-                linkTo(methodOn(TermoController.class).exibeTermo(id)).withSelfRel(),
-                linkTo(methodOn(TermoController.class).all()).withRel("termo"));
+        return assembler.toModel(termo);
         }
 
     @PutMapping("/{id}")
