@@ -42,16 +42,6 @@ public class TermoController {
         return repository.save(novoTermo);
     }
 
-    /*
-    @GetMapping("/{id}")
-    Termo exibeTermo(@PathVariable Long id) {
-
-        return repository.findById(id)
-                .orElseThrow(() -> new
-                TermoNotFoundException(id));
-        }
-     */
-
     @GetMapping("/{id}")
     EntityModel<Termo> exibeTermo(@PathVariable Long id) {
 
