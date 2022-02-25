@@ -45,16 +45,13 @@ curl -X GET localhost:8080/api/v1/termo/ID | json_pp
 ou com jq:
 
 ```bash
-cat saida.json | jq -C .
+curl -X GET localhost:8080/api/v1/termo/ID | jq -C "."
 ```
 
 ## Especificação
-
 ### Estrutura de dados
 
-
-Presente:
-
+#### Presente:
 ```json
 {
    "_links" : {
@@ -70,8 +67,8 @@ Presente:
    "termo" : "interface"
 }
 ```
-Planejada:
-
+#### Planejada
+Não inclui campos `href` com links:
 * **termo**
     * **termo** - nome principal, usado em títulos
     * **significados**
@@ -86,7 +83,7 @@ Planejada:
     	* **tag** - nome curto da tag
     	* **prioridade** - 1 a 99, números menores indicam maior prioridade
 
-#### Notação JSON 
+##### Notação JSON 
 ```json
 {
   "termo": "",
@@ -112,4 +109,3 @@ Planejada:
   ]
 }
 ```
-
