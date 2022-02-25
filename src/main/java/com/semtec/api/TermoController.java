@@ -2,6 +2,8 @@ package com.semtec.api;
 
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.IanaLinkRelations;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-@RequestMapping("/api/v1/termo")
+@RequestMapping("/api/v1")
 class TermoController {
 
     private final TermoRepository repository;
@@ -23,7 +25,7 @@ class TermoController {
         this.assembler = assembler;
     }
 
-    @GetMapping("")
+    @GetMapping("/termo")
     CollectionModel<EntityModel<Termo>> all() {
 
     List<EntityModel<Termo>> termos =
@@ -34,12 +36,18 @@ class TermoController {
     linkTo(methodOn(TermoController.class).all()).withSelfRel());
     }
 
-    @PostMapping("")
-    Termo criaTermo(@RequestBody Termo novoTermo) {
-        return repository.save(novoTermo);
+    @PostMapping("/termo")
+    ResponseEntity<?> novoTermo(@RequestBody Termo novoTermo) {
+
+        EntityModel<Termo> entityModel = assembler.toModel(
+                repository.save(novoTermo));
+
+        return ResponseEntity.created(entityModel
+                .getRequiredLink(IanaLinkRelations.SELF)
+                .toUri()).body(entityModel);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/termo/{id}")
     EntityModel<Termo> exibeTermo(@PathVariable Long id) {
 
         Termo termo = repository.findById(id)
@@ -48,7 +56,7 @@ class TermoController {
         return assembler.toModel(termo);
         }
 
-    @PutMapping("/{id}")
+    @PutMapping("/termo/{id}")
     Termo substituiTermo(@RequestBody Termo
                          novoTermo, @PathVariable Long id) {
 
@@ -64,7 +72,7 @@ class TermoController {
                 });
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/termo/{id}")
     void apagaTermo(@PathVariable Long id) {
         repository.deleteById(id);
     }
