@@ -10,16 +10,30 @@ import javax.persistence.Id;
 class Termo {
 
     private @Id
-    @GeneratedValue Long id;
+    @GeneratedValue
+    Long id;
     private String termo;
     private String significado;
+    private String resumo;
 
-    Termo() {}
+    Termo() {
+    }
 
-    Termo(String termo, String significado) {
+    Termo(String termo, String significado, String resumo) {
 
         this.termo = termo;
         this.significado = significado;
+        this.resumo = resumo;
+    }
+
+    public String getResumo() {
+        return this.termo + ": " + this.significado;
+    }
+
+    public void setResumo(String resumo) {
+        String[] partes = resumo.split(": ");
+        this.termo = partes[0];
+        this.significado = partes[1];
     }
 
     public Long getId() {
@@ -59,14 +73,17 @@ class Termo {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(this.id, this.termo, this.significado);
+    public String toString() {
+        return "Termo{" +
+                "id=" + id +
+                ", termo='" + termo + '\'' +
+                ", significado='" + significado + '\'' +
+                ", resumo='" + resumo + '\'' +
+                '}';
     }
 
     @Override
-    public String toString() {
-        return "Termo{" + "id=" + this.id + ",termo ='" +
-                this.termo + '\'' + ", significado ='" + this.significado +
-                '\'' + '}';
+    public int hashCode() {
+        return super.hashCode();
     }
 }
