@@ -26,7 +26,7 @@ steps:
     title: Building Docker Image
     type: build
     stage: build
-    image_name: semtec-api-0.2.0
+    image_name: jultty/semtec-api
     working_directory: ./
-    tag: 'multi-stage'
+    tag: 'main'
     dockerfile: Dockerfile
