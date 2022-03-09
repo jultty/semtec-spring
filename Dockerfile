@@ -1,11 +1,15 @@
-FROM openjdk:11 as builder
-ARG JAR_FILE=target/semtec-0.2.0-SNAPSHOT.jar
-COPY ${JAR_FILE} application.jar
-RUN java -Djarmode=layertools -jar application.jar extract
+FROM maven:3.8.4-jdk-11 AS MAVEN_TOOL_CHAIN
+COPY pom.xml /tmp/
+RUN mvn -B dependency:go-offline -f /tmp/pom.xml -s /usr/share/maven/ref/settings-docker.xml
+COPY src /tmp/src/
+WORKDIR /tmp/
+RUN mvn -B -s /usr/share/maven/ref/settings-docker.xml package
 
 FROM openjdk:11
-COPY --from=builder dependencies/ ./
-COPY --from=builder spring-boot-loader/ ./
-COPY --from=builder snapshot-dependencies/ ./
-COPY --from=builder application/ ./
-ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+
+EXPOSE 8080
+
+RUN mkdir /app
+COPY --from=MAVEN_TOOL_CHAIN /tmp/target/*.jar /app/semtec-0.2.0-SNAPSHOT.jar
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
