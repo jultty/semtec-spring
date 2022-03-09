@@ -12,11 +12,16 @@ public class LoadDatabase {
     private static final Logger log =
             LoggerFactory.getLogger(LoadDatabase.class);
 
-//    @Bean
-//    CommandLineRunner initDatabase(TermoRepository repository) {
-//        return args -> {
-//          log.info("Preloading " + repository.
-//                  save(new Termo("teste", "teste")));
-//        };
-//    }
+    @Bean
+    CommandLineRunner initDatabase(TermoRepository repository) {
+        return args -> {
+            log.info("Preloading " + repository.
+                save(new Termo("teste",
+         "processo controlado e previsível voltado à observação, " +
+                  "sem expectativa de sucesso", "")));
+            log.info("Preloading " + repository.
+                save(new Termo("interface", "media as trocas " +
+                  "de informação entre componentes de um sistema", "")));
+        };
+    }
 }
