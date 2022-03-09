@@ -1,0 +1,32 @@
+# More examples of Codefresh YAML can be found at
+# https://codefresh.io/docs/docs/yaml-examples/examples/
+
+version: '1.0'
+stages:
+  - prepare
+  - package
+  - build
+steps:
+  main_clone:
+    title: Cloning main repository...
+    stage: prepare
+    type: git-clone
+    repo: 'jultty/semtec-api'
+    # CF_BRANCH value is auto set when pipeline is triggered
+    # Learn more at codefresh.io/docs/docs/codefresh-yaml/variables/
+    revision: "${{CF_BRANCH}}"
+    git: jultty
+  package:
+    title: Compile/Test
+    stage: package
+    image: 'maven:3.8.4-jdk-11'
+    commands:
+      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
+  build:
+    title: Building Docker Image
+    type: build
+    stage: build
+    image_name: semtec-api-0.2.0
+    working_directory: ./
+    tag: 'multi-stage'
+    dockerfile: Dockerfile
