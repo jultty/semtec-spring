@@ -1,5 +1,6 @@
 # semtec API
 
+[![Codefresh build status](https://g.codefresh.io/api/badges/pipeline/jultty_marketplace/semtec-api%2Fsemtec-pipeline?type=cf-2&key=eyJhbGciOiJIUzI1NiJ9.NjIxZjc2OGMyYzA5NTFkMzA1ZWJiZTJm.4uGYdVoYyeg7gS49SbXs4PDO9yITBrxCqcZ41dkFPXw)]()
 [![Heroku](https://pyheroku-badge.herokuapp.com/?app=semtec&style=flat&path=/api/v1/termo)](https://semtec.herokuapp.com/)
 [![Actions Status](https://github.com/jultty/semtec-api/actions/workflows/maven.yml/badge.svg)](https://github.com/jultty/semtec-api/actions/workflows/maven.yml)
 [![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/jultty/semtec-api)](https://libraries.io/github/jultty/semtec-api)
