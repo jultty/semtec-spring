@@ -70,7 +70,7 @@ public class StepDefinitions {
         request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
         CloseableHttpResponse httpResponse = httpClient.execute(request);
         String responseString = convertResponseToString(httpResponse);
-            request.addHeader(HttpHeaders.USER_AGENT, "Googlebot");
+            request.addHeader(HttpHeaders.USER_AGENT, " Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:97.0) Gecko/20100101 Firefox/97.0 ");
 
         assertThat(responseString, containsString("\"termo\""));
         assertThat(responseString, containsString("\"significado\""));
