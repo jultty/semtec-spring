@@ -10,7 +10,9 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
+import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -22,23 +24,31 @@ import java.util.Scanner;
 
 public class StepDefinitions {
 
-    private String termoControllerPath = "/api/v1/termo/";
+    private final String termoControllerPath = "/api/v1/termo/";
 
     private static final String APPLICATION_JSON = "application/json";
 
     private final InputStream termoInputStream = this
             .getClass().getClassLoader()
             .getResourceAsStream("saida.json");
-    private final String termoJSONString =
-            new Scanner(termoInputStream, "UTF-8")
-                    .useDelimiter("\\Z").next();
+    private final String termoJSONString;
+
+    {
+        assert termoInputStream != null;
+        termoJSONString = new Scanner(termoInputStream, StandardCharsets.UTF_8)
+                .useDelimiter("\\Z").next();
+    }
 
     private final InputStream termo1InputStream = this
             .getClass().getClassLoader()
             .getResourceAsStream("saida_0001.json");
-    private final String termo1JSONString =
-            new Scanner(termo1InputStream, "UTF-8")
-                    .useDelimiter("\\Z").next();
+    private final String termo1JSONString;
+
+    {
+        assert termo1InputStream != null;
+        termo1JSONString = new Scanner(termo1InputStream, StandardCharsets.UTF_8)
+                .useDelimiter("\\Z").next();
+    }
 
     private final WireMockServer wireMockServer =
             new WireMockServer(options().dynamicPort());
@@ -57,8 +67,10 @@ public class StepDefinitions {
         HttpGet request = new HttpGet("http://localhost:" +
                 wireMockServer.port() + termoControllerPath);
         request.addHeader("accept", APPLICATION_JSON);
-        HttpResponse httpResponse = httpClient.execute(request);
+        request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
+        CloseableHttpResponse httpResponse = httpClient.execute(request);
         String responseString = convertResponseToString(httpResponse);
+            request.addHeader(HttpHeaders.USER_AGENT, "Googlebot");
 
         assertThat(responseString, containsString("\"termo\""));
         assertThat(responseString, containsString("\"significado\""));
@@ -70,8 +82,7 @@ public class StepDefinitions {
         verify(getRequestedFor(urlEqualTo(termoControllerPath))
                 .withHeader("accept", equalTo(APPLICATION_JSON)));
 
-        request.abort();
-        request.releaseConnection();
+        httpResponse.close();
         wireMockServer.stop();
 
     }
@@ -86,10 +97,11 @@ public class StepDefinitions {
                 .withHeader("accept", equalTo(APPLICATION_JSON))
                 .willReturn(aResponse() .withBody(termo1JSONString)));
 
-        HttpGet request = new HttpGet("http://localhost:" +
+        final HttpGet request = new HttpGet("http://localhost:" +
                 wireMockServer.port() + termoControllerPath + "1");
         request.addHeader("accept", APPLICATION_JSON);
-        HttpResponse httpResponse = httpClient.execute(request);
+        request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
+        CloseableHttpResponse httpResponse = httpClient.execute(request);
         String responseString = convertResponseToString(httpResponse);
 
         assertThat(responseString, containsString("\"teste\""));
@@ -102,8 +114,7 @@ public class StepDefinitions {
         verify(getRequestedFor(urlEqualTo(termoControllerPath))
                 .withHeader("accept", equalTo(APPLICATION_JSON)));
 
-        request.abort();
-        request.releaseConnection();
+        httpResponse.close();
         wireMockServer.stop();
 
     }
@@ -119,10 +130,11 @@ public class StepDefinitions {
                 .willReturn(aResponse() .withBody(termo1JSONString)
                 .withStatus(200)));
 
-        HttpGet request = new HttpGet("http://localhost:" +
+        final HttpGet request = new HttpGet("http://localhost:" +
                 wireMockServer.port() + termoControllerPath + "1");
         request.addHeader("accept", APPLICATION_JSON);
-        HttpResponse httpResponse = httpClient.execute(request);
+        request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
+        CloseableHttpResponse httpResponse = httpClient.execute(request);
         String responseString = convertResponseToString(httpResponse);
         String responseStatus = String.valueOf(httpResponse.getStatusLine());
 
@@ -130,8 +142,8 @@ public class StepDefinitions {
         assertThat(responseString, containsString("sucesso"));
         assertThat(responseStatus, containsString("200 OK"));
 
-        request.abort();
-        request.releaseConnection();
+        httpResponse.close();
+        httpClient.close();
         wireMockServer.stop();
 
     }
@@ -145,4 +157,6 @@ public class StepDefinitions {
         return responseString;
     }
 
+
+    
 }
