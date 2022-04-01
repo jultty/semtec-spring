@@ -5,6 +5,7 @@ version: '1.0'
 stages:
   - prepare
   - package
+  - test
   - build
 steps:
   main_clone:
@@ -17,13 +18,19 @@ steps:
     revision: "${{CF_BRANCH}}"
     git: jultty
   package:
-    title: Compile/Test
+    title: Packaging...
     stage: package
     image: 'maven:3.8.4-jdk-11'
     commands:
       - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package
+  test:
+    title: Testing...
+    stage: test
+    image: 'maven:3.8.4-jdk-11'
+    commands:
+      - mvn exec:java -Dexec.classpathScope=test -Dexec.mainClass=io.cucumber.core.cli.Main -Dexec.args='src/test/resources/Feature/'
   build:
-    title: Building Docker Image
+    title: Building Docker Image...
     type: build
     stage: build
     image_name: jultty/semtec-api
