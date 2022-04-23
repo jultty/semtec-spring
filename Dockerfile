@@ -10,6 +10,6 @@ FROM openjdk:11
 EXPOSE 8080
 
 RUN mkdir /app
-COPY --from=MAVEN_TOOL_CHAIN /tmp/target/*.jar /app/semtec-0.2.0-SNAPSHOT.jar
+COPY --from=MAVEN_TOOL_CHAIN /tmp/target/*.jar /app/semtec-0.3.0-SNAPSHOT.jar
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]

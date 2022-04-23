@@ -12,7 +12,7 @@
 
 Guarda, manipula e retorna significados de termos técnicos em notação JSON.
 
-Se deseja ler as definições, veja a [página Jekyll](https://jultty.github.io)
+Se deseja ler as definições, veja a [página web](https://semtec.netlify.app)
 com a mesma base de dados.
 
 ## Domínio
@@ -24,8 +24,6 @@ e disponibilizadas para consulta de forma serializada.
 e apagar entradas via requisições HTTP.
 
 ## Exemplos
-
-Implementação atual:
 
 Cria uma nova entrada:
 ```bash
@@ -53,65 +51,28 @@ ou com jq:
 curl -X GET localhost:8080/api/v1/termo/ID | jq -C "."
 ```
 
+O argumento `-C` torna a saída colorida.
+
 ## Especificação
 ### Estrutura de dados
 
-#### Presente:
 ```json
 {
-   "_links" : {
-      "self" : {
-         "href" : "http://localhost:8080/api/v1/termo/1"
-      },
-      "termo" : {
-         "href" : "http://localhost:8080/api/v1/termo/"
-      }
-   },
-   "id" : 1,
-   "significado" : "media as trocas de informação entre componentes de um sistema",
-   "termo" : "interface"
+  "id": 1,
+  "termo": "teste",
+  "significado": "processo controlado e previsível voltado à observação, sem expectativa de sucesso",
+  "resumo": "teste: processo controlado e previsível voltado à observação, sem expectativa de sucesso",
+  "pagina": "https://semtec.netlify.app/termo/teste",
+  "tag": "teste",
+  "paginaTag": "https://semtec.netlify.app/tag/teste",
+  "front_URL": "https://semtec.netlify.app/",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/v1/termo/1"
+    },
+    "termos": {
+      "href": "http://localhost:8080/api/v1/termo"
+    }
+  }
 }
 ```
-#### Planejada
-Não inclui campos `href` com links:
-* **termo**
-    * **termo** - nome principal, usado em títulos
-    * **significados**
-    	* **resumo** - descrição curta
-    	* **corpo** - corpo da descrição
-    	* **origem** - origem etimológica ou histórica
-    	* **traduções**
-    		* **tradução** - termo equivalente
-    		* **idioma** - 
-    		* **detalhes** - corpo da tradução
-    * **tags** - título (obrigatório)
-    	* **tag** - nome curto da tag
-    	* **prioridade** - 1 a 99, números menores indicam maior prioridade
-
-##### Notação JSON 
-```json
-{
-  "termo": "",
-  "significados": [
-    {
-      "resumo": "",
-      "corpo": "",
-      "origem": "",
-      "traduções": [
-        {
-          "tradução": "",
-          "idioma": "",
-          "detalhes": ""
-        }
-      ]
-    }
-  ],
-  "tags": [
-    {
-      "tag": "",
-      "prioridade": ""
-    }
-  ]
-}
-```
-

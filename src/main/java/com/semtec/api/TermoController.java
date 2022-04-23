@@ -48,7 +48,7 @@ class TermoController {
     }
 
     @GetMapping("/termo/{id}")
-    EntityModel<Termo> exibeTermo(@PathVariable Long id) {
+    EntityModel<Termo> exibeTermo(@PathVariable Integer id) {
 
         Termo termo = repository.findById(id)
                 .orElseThrow(() -> new TermoNotFoundException(id));
@@ -58,7 +58,7 @@ class TermoController {
 
     @PutMapping("/termo/{id}")
     Termo substituiTermo(@RequestBody Termo
-                         novoTermo, @PathVariable Long id) {
+                         novoTermo, @PathVariable Integer id) {
 
         return repository.findById(id)
                 .map(termo -> {
@@ -73,7 +73,7 @@ class TermoController {
     }
 
     @DeleteMapping("/termo/{id}")
-    void apagaTermo(@PathVariable Long id) {
+    void apagaTermo(@PathVariable Integer id) {
         repository.deleteById(id);
     }
 }
