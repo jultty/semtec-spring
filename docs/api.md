@@ -9,6 +9,7 @@ Os termos e significados desta base de dados
 podem ser utilizados no seu próprio código através de uma API:
 
 * [semtec-api](https://github.com/jultty/semtec-api)
+* [Endpoint no Heroku](https://semtec.herokuapp.com/)
 * [Imagem Docker](https://hub.docker.com/r/jultty/semtec-api/tags)
 
 Se você deseja apenas consultar as informações para sua própria
