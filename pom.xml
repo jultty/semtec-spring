@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<cucumber.version>7.3.2</cucumber.version>
+		<cucumber.version>7.3.4</cucumber.version>
 		<tomcat.version>9.0.58</tomcat.version>
 		<commons-io.version>2.11.0</commons-io.version>
 		<guava.version>31.1-jre</guava.version>
@@ -110,7 +110,7 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>7.3.2</version>
+            <version>${cucumber.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -120,7 +120,7 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit-platform-engine</artifactId>
-			<version>7.3.2</version>
+            <version>${cucumber.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.platform</groupId>
