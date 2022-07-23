@@ -5,6 +5,12 @@ import javax.persistence.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.io.UnsupportedEncodingException;
+
+import java.text.Normalizer;
+
 @Entity
 class Termo {
 
@@ -57,7 +63,16 @@ class Termo {
     }
 
     public String getPagina() {
-        return FRONT_URL + "termo/" + this.termo;
+        String termoNormalizado = Normalizer.normalize(this.termo,
+                Normalizer.Form.NFD);
+        termoNormalizado = termoNormalizado.replaceAll(
+                "[^\\p{ASCII}]", "");
+        try {
+        return FRONT_URL + "termo/" + URLEncoder.encode(termoNormalizado,
+                StandardCharsets.UTF_8.toString());
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e.getCause());
+        }
     }
 
     public void setPagina(String pagina) {
