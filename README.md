@@ -1,14 +1,10 @@
 # semtec API
 
 [![Codefresh build status](https://g.codefresh.io/api/badges/pipeline/jultty_marketplace/semtec-api%2Fsemtec-pipeline?type=cf-2&key=eyJhbGciOiJIUzI1NiJ9.NjIxZjc2OGMyYzA5NTFkMzA1ZWJiZTJm.4uGYdVoYyeg7gS49SbXs4PDO9yITBrxCqcZ41dkFPXw)](https://hub.docker.com/r/jultty/semtec-api/tags)
-[![Heroku](https://pyheroku-badge.herokuapp.com/?app=semtec&style=flat&path=/api/v1/termo)](https://semtec.herokuapp.com/)
 [![Actions Status](https://github.com/jultty/semtec-api/actions/workflows/maven.yml/badge.svg)](https://github.com/jultty/semtec-api/actions/workflows/maven.yml)
-[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/jultty/semtec-api)](https://libraries.io/github/jultty/semtec-api)
-
-[![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/jultty/semtec-api)](https://snyk.io/test/github/jultty/semtec-api)
-[![LGTM Alerts](https://img.shields.io/lgtm/alerts/github/jultty/semtec-api?label=alerts&logo=lgtm)](https://lgtm.com/projects/g/jultty/semtec-api/?mode=list)
-[![LGTM Grade](https://img.shields.io/lgtm/grade/java/github/jultty/semtec-api?label=java&logo=lgtm)](https://lgtm.com/projects/g/jultty/semtec-api/context:java)
 [![CodeFactor](https://www.codefactor.io/repository/github/jultty/semtec-api/badge)](https://www.codefactor.io/repository/github/jultty/semtec-api)
+[![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/jultty/semtec-api)](https://snyk.io/test/github/jultty/semtec-api)
+[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/jultty/semtec-api)](https://libraries.io/github/jultty/semtec-api)
 
 Guarda, manipula e retorna significados de termos técnicos em notação JSON.
 
