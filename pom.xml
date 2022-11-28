@@ -17,11 +17,11 @@
 		<java.version>11</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.0.0</spring.version>
-		<cucumber.version>7.8.1</cucumber.version>
-		<cucumber-junit.version>7.8.1</cucumber-junit.version>
-		<cucumber-junit-pe.version>7.8.1</cucumber-junit-pe.version>
-		<cucumber-junit-ps.version>1.9.0</cucumber-junit-ps.version>
-        <junit-jupiter.version>5.9.0</junit-jupiter.version>
+		<cucumber.version>7.9.0</cucumber.version>
+		<cucumber-junit.version>7.9.0</cucumber-junit.version>
+		<cucumber-junit-pe.version>7.9.0</cucumber-junit-pe.version>
+		<cucumber-junit-ps.version>1.9.1</cucumber-junit-ps.version>
+        <junit-jupiter.version>5.9.1</junit-jupiter.version>
 		<tomcat.version>9.0.58</tomcat.version>
 		<commons-io.version>2.11.0</commons-io.version>
 		<guava.version>31.1-jre</guava.version>
