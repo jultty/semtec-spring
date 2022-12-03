@@ -41,7 +41,7 @@ class Termo {
     Termo() {
     }
 
-    Termo(String termo, String significado, String resumo) {
+    Termo(String termo, String significado, String resumo, String pagina, String tag, String paginaTag) {
         this.termo = termo;
         this.significado = significado;
         this.resumo = resumo;
