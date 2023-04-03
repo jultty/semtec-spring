@@ -4,7 +4,6 @@
 [![Actions Status](https://github.com/jultty/semtec-api/actions/workflows/maven.yml/badge.svg)](https://github.com/jultty/semtec-api/actions/workflows/maven.yml)
 [![CodeFactor](https://www.codefactor.io/repository/github/jultty/semtec-api/badge)](https://www.codefactor.io/repository/github/jultty/semtec-api)
 [![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/jultty/semtec-api)](https://snyk.io/test/github/jultty/semtec-api)
-[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/jultty/semtec-api)](https://libraries.io/github/jultty/semtec-api)
 
 Guarda, manipula e retorna significados de termos técnicos em notação JSON.
 
