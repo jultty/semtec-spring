@@ -17,7 +17,7 @@
 		<java.version>11</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.0.5</spring.version>
-		<cucumber.version>7.10.0</cucumber.version>
+		<cucumber.version>7.11.2</cucumber.version>
 		<cucumber-junit.version>7.10.0</cucumber-junit.version>
 		<cucumber-junit-pe.version>7.9.0</cucumber-junit-pe.version>
 		<cucumber-junit-ps.version>1.9.1</cucumber-junit-ps.version>
